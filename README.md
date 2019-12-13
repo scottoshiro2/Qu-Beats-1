@@ -9,4 +9,4 @@ Coaches: Omar Costa Hamido, Lauren Capelluto
 
 https://github.com/qiskit-community/qiskit-camp-africa-19/issues/33
 
-presentation slides: https://docs.google.com/presentation/d/1NW7U_GlczXQ9Rn-Ufml5Xie-tFY_vbJgowsy2uo8Ewo/edit?usp=sharing
+presentation slides: https://docs.google.com/presentation/d/1NW7U_GlczXQ9Rn-Ufml5Xie-tFY_vbJgowsy2uo8Ewo

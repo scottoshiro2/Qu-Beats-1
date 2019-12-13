@@ -6,7 +6,7 @@ import numpy as np
 
 from mido import Message, MidiFile, MidiTrack
 
-from qiskit import QuantumCircuit
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, execute
 
 from qiskit.tools.visualization import plot_histogram
 
@@ -103,10 +103,10 @@ def save_to_midi(beat_array: List[int],
 
     mid.save(filename)
 
-save_to_midi(beat1, '/Users/scottoshiro/Documents/Qiskit_Camp/pBeat1.mid')
-save_to_midi(beat2, '/Users/scottoshiro/Documents/Qiskit_Camp/pBeat2.mid')
-save_to_midi(beat3, '/Users/scottoshiro/Documents/Qiskit_Camp/pBeat3.mid')
-save_to_midi(beat4, '/Users/scottoshiro/Documents/Qiskit_Camp/pBeat4.mid')
+save_to_midi(beat1, '/Users/lauren@ibm.com/Documents/pBeat1.mid')
+save_to_midi(beat2, '/Users/lauren@ibm.com/Documents/pBeat2.mid')
+save_to_midi(beat3, '/Users/lauren@ibm.com/Documents/pBeat3.mid')
+save_to_midi(beat4, '/Users/lauren@ibm.com/Documents/pBeat4.mid')
 
 
 #~~~~~~~ Build QuantumCircuits ~~~~~~~#
@@ -115,12 +115,12 @@ def build_circuits(transformation: Callable,
                    beat1: List[int], *beats: List[List[int]]) -> List[QuantumCircuit]:
     circuits = []
     for i in range(len(beats[0])):
-        qr = QuantumRegister(2)
-        cr = ClassicalRegister(2)
+        qr = QuantumRegister(4)
+        cr = ClassicalRegister(4)
         qc = QuantumCircuit(qr, cr)
-        for beat in beats:
+        for j, beat in enumerate(beats):
             if beat[i] == 1:
-                qc.x(i)
+                qc.x(j)
 
         qc.barrier()
         # Add transformation (and measurement)
@@ -152,20 +152,19 @@ for b in cir_array:
     new_track2.append(int(b[1]))
 
 ## New Midi Rhythms
-save_to_midi(new_track1, '/Users/scottoshiro/Documents/Qiskit_Camp/Bell_Circ.mid')
-save_to_midi(new_track2, '/Users/scottoshiro/Documents/Qiskit_Camp/Bell_Circ2.mid')
+save_to_midi(new_track1, '/Users/lauren@ibm.com/Documents/Bell_Circ.mid')
+save_to_midi(new_track2, '/Users/lauren@ibm.com/Documents/Bell_Circ2.mid')
 
 
 #~~~~~~~ TELEPORTATION ~~~~~~~#
 
-circuits = build_circuits(teleportation, beat1, beat2, beat3)
+circuits = build_circuits(add_teleportation, beat1, beat2, beat3)
 circuits[0].draw(output='mpl')
 
 # Executing code
 
 simulator = Aer.get_backend('qasm_simulator')
 result = execute(circuits, backend = simulator, shots=1).result()
-plot_histogram(result.get_counts(qc))
 
 cir_array = []
 for c in circuits:
@@ -201,6 +200,6 @@ for b in cir_array:
     new_track2.append(int(b[1]))
     new_track3.append(int(b[2]))
 
-save_to_midi(new_track1, '/Users/scottoshiro/Documents/Qiskit_Camp/new_teleport1.mid')
-save_to_midi(new_track2, '/Users/scottoshiro/Documents/Qiskit_Camp/new_teleport2.mid')
-save_to_midi(new_track3, '/Users/scottoshiro/Documents/Qiskit_Camp/new_teleport3.mid')
+save_to_midi(new_track1, '/Users/lauren@ibm.com/Documents/new_teleport1.mid')
+save_to_midi(new_track2, '/Users/lauren@ibm.com/Documents/new_teleport2.mid')
+save_to_midi(new_track3, '/Users/lauren@ibm.com/Documents/new_teleport3.mid')

@@ -10,7 +10,7 @@ Coaches: [Omar Costa Hamido](https://github.com/omarcostahamido), [Lauren Capell
 presentation slides: https://docs.google.com/presentation/d/1NW7U_GlczXQ9Rn-Ufml5Xie-tFY_vbJgowsy2uo8Ewo
 
 # Qu-Beats v2.0
-Author: Scott Oshiro
+__by [Scott Oshiro](https://github.com/scottoshiro2)
 Date: 3/24/2022
 
 This is similar to the 1st version of Qu-Beats but now you can entangle more complex midi drum patterns and entangle them to generate new patterns. This can run on both the aer-simulator and real quantum computers.

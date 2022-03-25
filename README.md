@@ -1,4 +1,4 @@
-# Qu-Beats
+# Qu-Beats v1.0
 __by [Scott Oshiro](https://github.com/scottoshiro2), [Tshepang Motsosi](https://github.com/Mabonito)__
 
 _Generating beats with quantum circuits_
@@ -11,6 +11,7 @@ presentation slides: https://docs.google.com/presentation/d/1NW7U_GlczXQ9Rn-Ufml
 
 # Qu-Beats v2.0
 Author: Scott Oshiro
+Date: 3/24/2022
 
 This is similar to the 1st version of Qu-Beats but now you can entangle more complex midi drum patterns and entangle them to generate new patterns. This can run on both the aer-simulator and real quantum computers.
 
